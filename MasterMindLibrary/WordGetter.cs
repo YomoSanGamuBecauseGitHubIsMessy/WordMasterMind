@@ -21,7 +21,7 @@
         {
             var lines = _lines.ToList();
             if (letterCount != null)
-                lines = lines.Where(l => l.Length == letterCount).ToList();
+                lines = lines.Where(l => l.Length <= letterCount).ToList();
             if (_random == null) return string.Empty;
             var index = _random.Next(-1, lines.Count);
             return lines.Count >= index ? lines[index] : string.Empty;

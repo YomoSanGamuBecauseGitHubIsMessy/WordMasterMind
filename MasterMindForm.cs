@@ -6,25 +6,19 @@ namespace MasterMind
     {
         private readonly MasterMindUiService _service;
         private readonly ILog _log;
-
+        
         public MasterMindForm(ILog log)
         {
             _log = log;
             InitializeComponent();
-            _service = new MasterMindUiService(GamePanel);
-        }
-
-        private void wordTxtBx_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode != Keys.Enter) return;
-            enterBtn_Click(sender, e);
+            _service = new MasterMindUiService(GamePanel, lettersPanel);
         }
 
         private void enterBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                _service.EnterWord(wordTxtBx.Text);
+                _service.EnterWord();
             }
             catch (Exception exception)
             {
@@ -36,12 +30,28 @@ namespace MasterMind
         {
             try
             {
-                _service.StartGame();
+                _service.StartGame(GetLetterCount(), GetTryCount());
             }
             catch (Exception exception)
             {
                 Log(exception);
             }
+        }
+
+        private int GetTryCount()
+        {
+            return GetValidNumber(tryTxtBx.Text, 7);
+        }
+
+        private int GetLetterCount()
+        {
+            return GetValidNumber(letterCountTxtBx.Text, 5);
+        }
+
+        private int GetValidNumber(string text, int defaultNumber)
+        {
+            if (string.IsNullOrEmpty(text)) return defaultNumber;
+            return int.TryParse(text, out var result) ? result : defaultNumber;
         }
 
         private void MasterMindForm_Resize(object sender, EventArgs e)
