@@ -3,8 +3,10 @@
     public class Board
     {
         private readonly int _tries;
+        private int tryCount;
+        public string OriginWord { get; private set; }
         public int TriesLeft { get; private set; }
-        public List<Try> TrieList { get; private set; }
+        public List<Try> TryList { get; private set; }
         public bool GameStart { get; private set; }
         public bool? PlayerHasWon { get; private set; }
 
@@ -16,11 +18,12 @@
 
         public void StartGame(string word)
         {
+            OriginWord = word;
             GameStart = true;
-            TrieList = new List<Try>();
+            TryList = new List<Try>();
             for (var i = 0; i < _tries; i++)
             {
-                TrieList.Add(new Try
+                TryList.Add(new Try
                 {
                     Word = CreateWord(word)
                 });   
@@ -29,38 +32,37 @@
 
         public void AddTry(string word)
         {
-            var tryIndex = TriesLeft - 1;
-            if (tryIndex == 0)
+            if (TriesLeft - 1 < 0)
             {
                 GameStart = false;
                 PlayerHasWon = false;
+                return;
             }
-            else
+            var tryItem = TryList[tryCount];
+            if (OriginWord.Equals(word))
             {
-                var tryItem = TrieList[tryIndex];
-                if (tryItem.Word.Match(word))
-                {
-                    PlayerHasWon = true;
-                    GameStart = false;
-                }
-                else
-                {
-                    for (var i = 0; i < word.Length; i++)
-                    {
-                        var letter = word[i];
-                        tryItem.Word.Match(letter, i);
-                    }
-                }
-                tryItem.Used = true;
-                TriesLeft--;
+                PlayerHasWon = true;
+                GameStart = false;
             }
+            for (var i = 0; i < word.Length; i++)
+            {
+                var letter = word[i];
+                tryItem.Word.Match(letter, i, OriginWord);
+            }
+
+            tryItem.Word.TryWord = word;
+            tryItem.Used = true;
+            TriesLeft--;
+            tryCount++;
+            if (TriesLeft > 0) return;
+            GameStart = false;
+            PlayerHasWon = false;
         }
 
         private Word CreateWord(string word)
         {
             return new Word
             {
-                OriginWord = word,
                 CorrectMatches = CreateMatches(word.Length),
                 IncludeMatches = CreateMatches(word.Length),
                 IncorrectMatches = CreateMatches(word.Length)

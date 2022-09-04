@@ -1,3 +1,7 @@
+using System.Reflection;
+using log4net;
+using MasterMindLibrary;
+
 namespace MasterMind
 {
     internal static class Program
@@ -6,12 +10,22 @@ namespace MasterMind
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new MasterMindForm());
+            Logger.Setup();
+            WordListUpdater.Update();
+            WordGetter.SetUp();
+            var log = LogManager.GetLogger(Assembly.GetAssembly(typeof(Program)), typeof(Program));
+            try
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new MasterMindForm(log));
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
+                MessageBoxCreator.ShowError();
+            }
         }
     }
 }
