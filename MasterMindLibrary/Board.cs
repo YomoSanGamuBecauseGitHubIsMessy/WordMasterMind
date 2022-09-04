@@ -3,7 +3,7 @@
     public class Board
     {
         private readonly int _tries;
-        private int tryCount;
+        private int _tryCount;
         public string OriginWord { get; private set; }
         public int TriesLeft { get; private set; }
         public List<Try> TryList { get; private set; }
@@ -38,7 +38,7 @@
                 PlayerHasWon = false;
                 return;
             }
-            var tryItem = TryList[tryCount];
+            var tryItem = TryList[_tryCount];
             if (OriginWord.Equals(word))
             {
                 PlayerHasWon = true;
@@ -53,7 +53,7 @@
             tryItem.Word.TryWord = word;
             tryItem.Used = true;
             TriesLeft--;
-            tryCount++;
+            _tryCount++;
             if (TriesLeft > 0) return;
             GameStart = false;
             PlayerHasWon = false;

@@ -1,5 +1,4 @@
-﻿using System;
-using MasterMindLibrary;
+﻿using MasterMindLibrary;
 
 namespace MasterMind
 {
@@ -80,6 +79,7 @@ namespace MasterMind
         public void UpdateGamePanel()
         {
             _gamePanel.Controls.Clear();
+            if (_board == null) return;
             for (var index = 0; index < _board.TryList.Count; index++)
             {
                 var tryItem = _board.TryList[index];
@@ -93,7 +93,7 @@ namespace MasterMind
                 for (var i = 0; i < length; i++)
                 {
                     var match = tryItem.GetMatch(i);
-                    var panel = CreateLabel(tryItem.Word.TryWord == null ? '_' :tryItem.Word.TryWord[i], match);
+                    var panel = CreateLabel(tryItem.Word.TryWord == null ? '_' : tryItem.Word.TryWord[i], match);
                     flowPanel.Controls.Add(panel);
                 }
 

@@ -1,6 +1,5 @@
 using FluentAssertions;
 using FluentAssertions.Execution;
-using MasterMindLibrary;
 using NUnit.Framework;
 
 namespace MasterMindLibraryTests;

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace MasterMindLibrary;
+﻿namespace MasterMindLibrary;
 
 public static class WordListUpdater
 {
