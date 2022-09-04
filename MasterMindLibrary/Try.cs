@@ -10,7 +10,7 @@ public class Try
     public void MatchLetter(char letter, int i, string originWord, IDictionary<char, int> doubleLetters)
     {
         var originLetter = originWord[i];
-        if(doubleLetters[letter] > 0)
+        if(doubleLetters.ContainsKey(letter) && doubleLetters[letter] > 0)
         {
             var match = originLetter.Equals(letter);
             CorrectMatches[i] = match;

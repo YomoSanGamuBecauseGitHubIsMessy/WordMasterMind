@@ -62,12 +62,11 @@
             }
 
             var tryItem = TryList[_tryCount];
-            var doubleLetters = BuildDoubleLetters(word);
 
             for (var i = 0; i < word.Length; i++)
             {
                 var letter = word[i];
-                tryItem.MatchLetter(letter, i, OriginWord, doubleLetters);
+                tryItem.MatchLetter(letter, i, OriginWord, DoubleLetters);
             }
 
             tryItem.TryWord = word;
