@@ -16,12 +16,9 @@ public class TryTest : TestBase
     {
         var tryItem = new Try
         {
-            Word = new Word
-            {
-                CorrectMatches = correctMatches,
-                IncludeMatches = includeMatches,
-                IncorrectMatches = incorrectMatches
-            }
+            CorrectMatches = correctMatches,
+            IncludeMatches = includeMatches,
+            IncorrectMatches = incorrectMatches
         };
         using (new AssertionScope())
         {

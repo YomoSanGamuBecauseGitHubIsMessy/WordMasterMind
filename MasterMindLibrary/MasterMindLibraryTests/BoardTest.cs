@@ -21,10 +21,10 @@ namespace MasterMindLibraryTests
                 board.TryList.Should().HaveCount(tries);
                 foreach (var tryItem in board.TryList)
                 {
-                    tryItem.Word.Should().NotBeNull();
-                    tryItem.Word.CorrectMatches.Should().HaveCount(word.Length);
-                    tryItem.Word.IncludeMatches.Should().HaveCount(word.Length);
-                    tryItem.Word.IncorrectMatches.Should().HaveCount(word.Length);
+                    tryItem.Should().NotBeNull();
+                    tryItem.CorrectMatches.Should().HaveCount(word.Length);
+                    tryItem.IncludeMatches.Should().HaveCount(word.Length);
+                    tryItem.IncorrectMatches.Should().HaveCount(word.Length);
                 }
             }
         }
@@ -63,15 +63,15 @@ namespace MasterMindLibraryTests
                     var tryItem = board.TryList[index];
                     if(index == 0)
                     {
-                        tryItem.Word.CorrectMatches.Should().BeEquivalentTo(correctMatches);
-                        tryItem.Word.IncludeMatches.Should().BeEquivalentTo(includeMatches);
-                        tryItem.Word.IncorrectMatches.Should().BeEquivalentTo(incorrectMatches);
+                        tryItem.CorrectMatches.Should().BeEquivalentTo(correctMatches);
+                        tryItem.IncludeMatches.Should().BeEquivalentTo(includeMatches);
+                        tryItem.IncorrectMatches.Should().BeEquivalentTo(incorrectMatches);
                     }
                     else
                     {
-                        tryItem.Word.CorrectMatches.Should().OnlyContain(c => c == false);
-                        tryItem.Word.IncludeMatches.Should().OnlyContain(c => c == false);
-                        tryItem.Word.IncorrectMatches.Should().OnlyContain(c => c == false);
+                        tryItem.CorrectMatches.Should().OnlyContain(c => c == false);
+                        tryItem.IncludeMatches.Should().OnlyContain(c => c == false);
+                        tryItem.IncorrectMatches.Should().OnlyContain(c => c == false);
                     }
                     tryItem.Used.Should().Be(index == 0);
                 }

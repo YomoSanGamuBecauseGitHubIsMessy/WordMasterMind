@@ -93,7 +93,7 @@ namespace MasterMind
                 for (var i = 0; i < length; i++)
                 {
                     var match = tryItem.GetMatch(i);
-                    var panel = CreateLabel(tryItem.Word.TryWord == null ? '_' : tryItem.Word.TryWord[i], match);
+                    var panel = CreateLabel(tryItem.TryWord == null ? '_' : tryItem.TryWord[i], match);
                     flowPanel.Controls.Add(panel);
                 }
 
