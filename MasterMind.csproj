@@ -8,4 +8,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="MasterMindLibrary\**" />
+    <EmbeddedResource Remove="MasterMindLibrary\**" />
+    <None Remove="MasterMindLibrary\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="MasterMindLibrary\MasterMindLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
