@@ -13,7 +13,6 @@ namespace MasterMind
         private static void Main()
         {
             Logger.Setup();
-            WordListUpdater.Update();
             WordGetter.SetUp();
             var log = LogManager.GetLogger(Assembly.GetAssembly(typeof(Program)), typeof(Program));
             try

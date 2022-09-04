@@ -20,12 +20,6 @@
     <None Update="LICENSE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="README.md">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="wortliste-generieren.sh">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="wortliste.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
