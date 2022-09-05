@@ -7,24 +7,38 @@ public class Try
     public bool[] CorrectMatches { get; set; }
     public bool[] IncludeMatches { get; set; }
     public bool[] IncorrectMatches { get; set; }
-    public void MatchLetter(char letter, int i, string originWord, IDictionary<char, int> doubleLetters)
+
+    public void MatchWord(string word, string originWord, IDictionary<char, int> doubleLetter)
     {
-        var originLetter = originWord[i];
-        if(doubleLetters.ContainsKey(letter) && doubleLetters[letter] > 0)
+        IDictionary<char, int> lettersCopy = CopyLetters(doubleLetter);
+        for (var i = 0; i < word.Length; i++)
         {
-            var match = originLetter.Equals(letter);
-            CorrectMatches[i] = match;
-            IncorrectMatches[i] = !match;
-            IncludeMatches[i] = originWord.Contains(letter);
-            doubleLetters[letter]--;
+            var letter = word[i];
+            if (!lettersCopy.ContainsKey(letter) || lettersCopy[letter] <= 0) continue;
+            CorrectMatches[i] = letter == originWord[i];
+            lettersCopy[letter]--;
         }
-        else
+
+        lettersCopy = CopyLetters(doubleLetter);
+        for (var i = 0; i < word.Length; i++)
         {
-            CorrectMatches[i] = false;
-            IncorrectMatches[i] = true;
-            IncludeMatches[i] = false;
+            var letter = word[i];
+            IncludeMatches[i] = lettersCopy.ContainsKey(letter) && lettersCopy[letter] > 0;
+            if(lettersCopy.ContainsKey(letter))
+                lettersCopy[letter]--;
+        }
+        for (var i = 0; i < word.Length; i++)
+        {
+            var letter = word[i];
+            IncorrectMatches[i] = letter != originWord[i];
         }
     }
+
+    private Dictionary<char, int> CopyLetters(IDictionary<char, int> doubleLetter)
+    {
+        return doubleLetter.ToDictionary(item => item.Key, item => item.Value);
+    }
+
     public Match GetMatch(int i)
     {
         if (CorrectMatches[i])

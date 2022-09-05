@@ -9,7 +9,7 @@
         public List<Try> TryList { get; private set; }
         public bool GameStart { get; private set; }
         public bool? PlayerHasWon { get; private set; }
-        public Dictionary<char, int> DoubleLetters { get; set; }
+        private Dictionary<char, int> DoubleLetters { get; set; }
         public Board(int tries)
         {
             _tries = tries;
@@ -62,12 +62,8 @@
             }
 
             var tryItem = TryList[_tryCount];
-
-            for (var i = 0; i < word.Length; i++)
-            {
-                var letter = word[i];
-                tryItem.MatchLetter(letter, i, OriginWord, DoubleLetters);
-            }
+            var doubleLetters = DoubleLetters.ToDictionary(item => item.Key, item => item.Value);
+            tryItem.MatchWord(word, OriginWord, doubleLetters);
 
             tryItem.TryWord = word;
             tryItem.Used = true;
