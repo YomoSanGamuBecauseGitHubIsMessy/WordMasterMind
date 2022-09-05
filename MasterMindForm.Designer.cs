@@ -33,6 +33,12 @@
             this.enterBtn = new System.Windows.Forms.Button();
             this.Splitter2 = new System.Windows.Forms.Splitter();
             this.LeftPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grayLbl = new System.Windows.Forms.Label();
+            this.orangePnl = new System.Windows.Forms.Panel();
+            this.greenPnl = new System.Windows.Forms.Panel();
+            this.grayPnl = new System.Windows.Forms.Panel();
             this.tryTxtBx = new System.Windows.Forms.TextBox();
             this.tryLbl = new System.Windows.Forms.Label();
             this.letterCountLbl = new System.Windows.Forms.Label();
@@ -40,12 +46,6 @@
             this.startGameBtn = new System.Windows.Forms.Button();
             this.Splitter1 = new System.Windows.Forms.Splitter();
             this.GamePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.grayPnl = new System.Windows.Forms.Panel();
-            this.greenPnl = new System.Windows.Forms.Panel();
-            this.orangePnl = new System.Windows.Forms.Panel();
-            this.grayLbl = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.DownPanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +79,7 @@
             this.enterBtn.Name = "enterBtn";
             this.enterBtn.Size = new System.Drawing.Size(794, 23);
             this.enterBtn.TabIndex = 1;
+            this.enterBtn.TabStop = false;
             this.enterBtn.Text = "Enter";
             this.enterBtn.UseVisualStyleBackColor = true;
             this.enterBtn.Click += new System.EventHandler(this.enterBtn_Click);
@@ -112,12 +113,64 @@
             this.LeftPanel.Size = new System.Drawing.Size(200, 345);
             this.LeftPanel.TabIndex = 12;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(46, 203);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(150, 15);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Übereinstimmung an Stelle";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(46, 165);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 15);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Im Wort enthalten";
+            // 
+            // grayLbl
+            // 
+            this.grayLbl.AutoSize = true;
+            this.grayLbl.Location = new System.Drawing.Point(46, 127);
+            this.grayLbl.Name = "grayLbl";
+            this.grayLbl.Size = new System.Drawing.Size(135, 15);
+            this.grayLbl.TabIndex = 9;
+            this.grayLbl.Text = "Keine Übereinstimmung";
+            // 
+            // orangePnl
+            // 
+            this.orangePnl.BackColor = System.Drawing.Color.Orange;
+            this.orangePnl.Location = new System.Drawing.Point(12, 157);
+            this.orangePnl.Name = "orangePnl";
+            this.orangePnl.Size = new System.Drawing.Size(28, 32);
+            this.orangePnl.TabIndex = 8;
+            // 
+            // greenPnl
+            // 
+            this.greenPnl.BackColor = System.Drawing.Color.Green;
+            this.greenPnl.Location = new System.Drawing.Point(12, 195);
+            this.greenPnl.Name = "greenPnl";
+            this.greenPnl.Size = new System.Drawing.Size(28, 32);
+            this.greenPnl.TabIndex = 7;
+            // 
+            // grayPnl
+            // 
+            this.grayPnl.BackColor = System.Drawing.Color.Gray;
+            this.grayPnl.Location = new System.Drawing.Point(12, 119);
+            this.grayPnl.Name = "grayPnl";
+            this.grayPnl.Size = new System.Drawing.Size(28, 32);
+            this.grayPnl.TabIndex = 6;
+            // 
             // tryTxtBx
             // 
             this.tryTxtBx.Location = new System.Drawing.Point(152, 75);
             this.tryTxtBx.Name = "tryTxtBx";
             this.tryTxtBx.Size = new System.Drawing.Size(42, 23);
             this.tryTxtBx.TabIndex = 5;
+            this.tryTxtBx.TabStop = false;
             this.tryTxtBx.Text = "7";
             // 
             // tryLbl
@@ -144,6 +197,7 @@
             this.letterCountTxtBx.Name = "letterCountTxtBx";
             this.letterCountTxtBx.Size = new System.Drawing.Size(42, 23);
             this.letterCountTxtBx.TabIndex = 2;
+            this.letterCountTxtBx.TabStop = false;
             this.letterCountTxtBx.Text = "5";
             // 
             // startGameBtn
@@ -152,6 +206,7 @@
             this.startGameBtn.Name = "startGameBtn";
             this.startGameBtn.Size = new System.Drawing.Size(182, 23);
             this.startGameBtn.TabIndex = 0;
+            this.startGameBtn.TabStop = false;
             this.startGameBtn.Text = "Spiel starten";
             this.startGameBtn.UseVisualStyleBackColor = true;
             this.startGameBtn.Click += new System.EventHandler(this.startGameBtn_Click);
@@ -173,57 +228,6 @@
             this.GamePanel.Name = "GamePanel";
             this.GamePanel.Size = new System.Drawing.Size(595, 345);
             this.GamePanel.TabIndex = 14;
-            // 
-            // grayPnl
-            // 
-            this.grayPnl.BackColor = System.Drawing.Color.Gray;
-            this.grayPnl.Location = new System.Drawing.Point(12, 119);
-            this.grayPnl.Name = "grayPnl";
-            this.grayPnl.Size = new System.Drawing.Size(28, 32);
-            this.grayPnl.TabIndex = 6;
-            // 
-            // greenPnl
-            // 
-            this.greenPnl.BackColor = System.Drawing.Color.Green;
-            this.greenPnl.Location = new System.Drawing.Point(12, 195);
-            this.greenPnl.Name = "greenPnl";
-            this.greenPnl.Size = new System.Drawing.Size(28, 32);
-            this.greenPnl.TabIndex = 7;
-            // 
-            // orangePnl
-            // 
-            this.orangePnl.BackColor = System.Drawing.Color.Orange;
-            this.orangePnl.Location = new System.Drawing.Point(12, 157);
-            this.orangePnl.Name = "orangePnl";
-            this.orangePnl.Size = new System.Drawing.Size(28, 32);
-            this.orangePnl.TabIndex = 8;
-            // 
-            // grayLbl
-            // 
-            this.grayLbl.AutoSize = true;
-            this.grayLbl.Location = new System.Drawing.Point(46, 127);
-            this.grayLbl.Name = "grayLbl";
-            this.grayLbl.Size = new System.Drawing.Size(135, 15);
-            this.grayLbl.TabIndex = 9;
-            this.grayLbl.Text = "Keine Übereinstimmung";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 165);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 15);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Im Wort enthalten";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 203);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 15);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Übereinstimmung an Stelle";
             // 
             // MasterMindForm
             // 

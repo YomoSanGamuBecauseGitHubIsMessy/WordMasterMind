@@ -43,8 +43,9 @@ namespace MasterMind
                 BackColor = color,
                 Text = match == Match.Nothing ? string.Empty : $@"{letter}",
                 Font = font,
-                Padding = new Padding(0,0,0,10),
-                BorderStyle = BorderStyle.FixedSingle
+                Margin = new Padding(5,5,5,5),
+                BorderStyle = BorderStyle.FixedSingle,
+                TextAlign = ContentAlignment.MiddleCenter
             };
         }
         private void wordTxtBx_KeyDown(object? sender, KeyEventArgs e)
