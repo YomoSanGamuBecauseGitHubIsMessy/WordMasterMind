@@ -49,6 +49,16 @@ namespace MasterMind
         }
         private void wordTxtBx_KeyDown(object? sender, KeyEventArgs e)
         {
+            if (sender is not TextBox box) return;
+            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Delete && e.KeyCode != Keys.Back)
+            {
+                box.Text = box.Text.Length > 0 ? box.Text[..1] : box.Text;
+                var index = _lettersPanel.Controls.IndexOf(box);
+                if (index - 1 < _lettersPanel.Controls.Count && index - 1 > -1)
+                    _lettersPanel.Controls[index - 1].Focus();
+                return;
+            }
+
             if (e.KeyCode != Keys.Enter) return;
             EnterWord();
         }
@@ -107,19 +117,7 @@ Das gesuchte Wort war {_board.OriginWord}");
                     TabIndex = index
                 };
                 textBox.KeyDown += wordTxtBx_KeyDown;
-                textBox.TextChanged += wordTxtBx_TextChanged;
                 _lettersPanel.Controls.Add(textBox);
-            }
-        }
-
-        private void wordTxtBx_TextChanged(object? sender, EventArgs e)
-        {
-            if (sender is TextBox box)
-            {
-                box.Text = box.Text.Length > 0 ? box.Text[..1] : box.Text;
-                var index = _lettersPanel.Controls.IndexOf(box);
-                if (index - 1 < _lettersPanel.Controls.Count && index - 1 > -1)
-                    _lettersPanel.Controls[index - 1].Focus();
             }
         }
 
